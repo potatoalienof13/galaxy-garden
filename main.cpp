@@ -1,6 +1,5 @@
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
-#include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
 
 #include <iostream>
@@ -18,6 +17,7 @@ int main()
 {
     Mat bg_image(bg_dims.y,bg_dims.x, CV_8UC3, Scalar(0,0,0));
     RNG random(time(NULL));
+
 #ifdef GRIDPOINTS
     num_points = grid_dims.x * grid_dims.y;
     std::vector<XYRGB> points(num_points);
@@ -51,9 +51,9 @@ int main()
     {
         i.rgb =
         {
-            random.uniform(0,255),
-            random.uniform(0,255),
-            random.uniform(0,255),
+            random.uniform(200,255),
+            random.uniform(0,90),
+            random.uniform(0,90),
         };
     }
 #ifdef UNPAR // I am leaving this here for debugging
