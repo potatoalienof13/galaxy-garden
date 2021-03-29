@@ -9,7 +9,7 @@ int num_points = 10;
 
 
 //The number of points used for the weighted average taken
-constexpr int num_average = 4;
+constexpr int num_average = 2;
 
 std::string filename = "default_file_name.png";
 
