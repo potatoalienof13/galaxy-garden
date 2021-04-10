@@ -51,9 +51,9 @@ int main()
     {
         i.rgb =
         {
-            random.uniform(200,255),
-            random.uniform(0,90),
-            random.uniform(0,90),
+            random.uniform(0,255),
+            random.uniform(0,255),
+            random.uniform(0,255),
         };
     }
 #ifdef UNPAR // I am leaving this here for debugging
@@ -98,11 +98,11 @@ RGB two_points(Point xy,  std::vector<XYRGB> & points)
     for(int i = 0; i < num_points; i++)
     {
         point_distances[i].index = i;
-        point_distances[i].distance = distance_between(xy, points[i].xy);
+        double distance = distance_between(xy, points[i].xy);
+        point_distances[i].distance = std::pow(distance,4);
     }
 
-// TODO (potato#1#): Replace this with something that isnt really slow.
-    std::sort(point_distances.begin(), point_distances.end(), [](ind_and_dist thing1, ind_and_dist thing2)
+    std::partial_sort(point_distances.begin(), point_distances.begin() + num_average, point_distances.end(), [](ind_and_dist thing1, ind_and_dist thing2)
     {
         return thing1.distance < thing2.distance;
     });
@@ -125,5 +125,4 @@ RGB two_points(Point xy,  std::vector<XYRGB> & points)
         }
     }
     return color;
-
 }
